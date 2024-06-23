@@ -1,0 +1,12 @@
+node_modules
+/dist
+.dumi/tmp
+.dumi/tmp-production
+.DS_Store
+
+dist/
+deploy_versions/
+.temp/
+.rn_temp/
+node_modules/
+.swc
