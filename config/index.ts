@@ -1,10 +1,12 @@
 import { defineConfig, type UserConfigExport } from '@tarojs/cli';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import { UnifiedWebpackPluginV5 } from 'weapp-tailwindcss/webpack';
 import devConfig from './dev';
 import prodConfig from './prod';
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
 export default defineConfig(async (merge, { command, mode }) => {
+  console.log(`command: ${command}`, `mode: ${mode}`);
   const baseConfig: UserConfigExport = {
     projectName: 'tarofly-ui',
     date: '2024-6-23',
@@ -50,6 +52,27 @@ export default defineConfig(async (merge, { command, mode }) => {
       },
       webpackChain(chain) {
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin);
+        chain.merge({
+          plugin: {
+            install: {
+              plugin: UnifiedWebpackPluginV5,
+              args: [
+                {
+                  appType: 'taro',
+                  // disabled: WeappTailwindcssDisabled,
+                  rem2rpx: {
+                    // 32 意味着 1rem = 32rpx
+                    rootValue: 4,
+                    // 默认所有属性都转化
+                    propList: ['*'],
+                    // 转化的单位,可以变成 px / rpx
+                    transformUnit: 'rpx'
+                  }
+                }
+              ]
+            }
+          }
+        });
       },
     },
     h5: {
@@ -79,6 +102,27 @@ export default defineConfig(async (merge, { command, mode }) => {
       },
       webpackChain(chain) {
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin);
+        chain.merge({
+          plugin: {
+            install: {
+              plugin: UnifiedWebpackPluginV5,
+              args: [
+                {
+                  appType: 'taro',
+                  // disabled: WeappTailwindcssDisabled,
+                  rem2rpx: {
+                    // 32 意味着 1rem = 32rpx
+                    rootValue: 4,
+                    // 默认所有属性都转化
+                    propList: ['*'],
+                    // 转化的单位,可以变成 px / rpx
+                    transformUnit: 'px'
+                  }
+                }
+              ]
+            }
+          }
+        });
       },
     },
     rn: {

@@ -9,7 +9,7 @@ hero:
     - text: World
       link: /
 features:
-  - title: Hello
+  - title: Hellos
     emoji: 💎
     description: Put hello description here
   - title: World

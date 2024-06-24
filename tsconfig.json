@@ -22,9 +22,8 @@
     "resolveJsonModule": true,
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      // TS5090 leading './'
       "@/*": ["./src/*"],
-      "@@/*": [".dumi/tmp/*"]
+      "@@/*": ["./.dumi/tmp/*"]
     }
   },
   "include": [".dumirc.ts", "./src", "./types", "./config"],

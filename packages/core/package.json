@@ -1,0 +1,36 @@
+{
+  "name": "@tarofly/core",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": "true",
+  "keywords": [
+    "ui",
+    "taro",
+    "react",
+    "mobile",
+    "component",
+    "components"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@tarojs/components": ">=3",
+    "@tarojs/taro": ">=3",
+    "react": "^18.3.1"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lodash-es": "^4.17.21",
+    "promise": "^8.1.0",
+    "react-transition-group": "^4.4.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^13.1.2",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^20.14.8"
+  }
+}
