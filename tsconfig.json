@@ -26,6 +26,6 @@
       "@@/*": ["./.dumi/tmp/*"]
     }
   },
-  "include": [".dumirc.ts", "./src", "./types", "./config"],
+  "include": [".dumirc.ts", "./packages", "./src", "./typings", "./config"],
   "compileOnSave": false
 }

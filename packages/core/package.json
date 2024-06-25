@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "license": "MIT",
   "private": "true",
+  "type": "module",
+  "main": "src/index",
   "keywords": [
     "ui",
     "taro",

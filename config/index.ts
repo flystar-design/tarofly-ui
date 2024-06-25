@@ -26,12 +26,23 @@ export default defineConfig(async (merge, { command, mode }) => {
       options: {},
     },
     framework: 'react',
-    compiler: 'webpack5',
+    compiler: {
+      type: 'webpack5',
+      prebundle: {
+        enable: false,
+      },
+    },
     cache: {
-      enable: false, // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
+      enable: true, // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
     mini: {
       postcss: {
+        htmltransform: {
+          enable: true,
+          config: {
+            removeCursorStyle: false,
+          },
+        },
         pxtransform: {
           enable: true,
           config: {},
@@ -66,12 +77,12 @@ export default defineConfig(async (merge, { command, mode }) => {
                     // 默认所有属性都转化
                     propList: ['*'],
                     // 转化的单位,可以变成 px / rpx
-                    transformUnit: 'rpx'
-                  }
-                }
-              ]
-            }
-          }
+                    transformUnit: 'rpx',
+                  },
+                },
+              ],
+            },
+          },
         });
       },
     },
@@ -81,6 +92,9 @@ export default defineConfig(async (merge, { command, mode }) => {
       output: {
         filename: 'js/[name].[hash:8].js',
         chunkFilename: 'js/[name].[chunkhash:8].js',
+      },
+      router: {
+        mode: 'browser', // hash
       },
       miniCssExtractPluginOption: {
         ignoreOrder: true,
@@ -102,27 +116,6 @@ export default defineConfig(async (merge, { command, mode }) => {
       },
       webpackChain(chain) {
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin);
-        chain.merge({
-          plugin: {
-            install: {
-              plugin: UnifiedWebpackPluginV5,
-              args: [
-                {
-                  appType: 'taro',
-                  // disabled: WeappTailwindcssDisabled,
-                  rem2rpx: {
-                    // 32 意味着 1rem = 32rpx
-                    rootValue: 4,
-                    // 默认所有属性都转化
-                    propList: ['*'],
-                    // 转化的单位,可以变成 px / rpx
-                    transformUnit: 'px'
-                  }
-                }
-              ]
-            }
-          }
-        });
       },
     },
     rn: {

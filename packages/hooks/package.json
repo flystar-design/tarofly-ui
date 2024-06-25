@@ -1,8 +1,10 @@
 {
-  "name": "@tarofly/core",
+  "name": "@tarofly/hooks",
   "version": "0.0.1",
   "license": "MIT",
   "private": "true",
+  "type": "module",
+  "main": "src/index.ts",
   "keywords": [
     "ui",
     "taro",
